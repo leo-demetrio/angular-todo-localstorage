@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Todo } from 'src/models/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'code-bse';
+  public todos: Todo[] = [];
+  public title: String = "Minhas Tarefas";
+
+
+  constructor() {
+    this.todos.push(new Todo(1,'cortar cabelo',false));
+    this.todos.push(new Todo(2,'cortar carne',true));   
+  }
+
+  remove(todo: Todo){
+    const index = this.todos.indexOf(todo);
+    if(index !== -1){
+      this.todos.splice(index, 1);
+    }
+  }
+  markAsDone(){
+
+  }
+  markAsUndone(){
+      
+  }
 }
