@@ -1,5 +1,5 @@
 <p>{{ title }}</p>
-
+<p *ngIf="todos.length==0"><small>Você não tem nenhuma tarefa hoje</small></p>
 <ul>
     <li *ngFor="let todo of todos">
         {{ todo.id }}. {{ todo.title }} - 
@@ -20,6 +20,6 @@
         >
         <small 
             *ngIf="form.controls.title.invalid && !form.controls.title.pristine">Este campo deve conter 60 caracteres</small>
-        <button [disabled]="form.invalid">Salvar</button>
+        <button [disabled]="form.invalid"  (click)="add()">Salvar</button>
     </fieldset>
 </form>

@@ -12,7 +12,6 @@ export class AppComponent {
   public title: String = "Minhas Tarefas";
   public form: FormGroup;
 
-
   constructor(
     private fb: FormBuilder,
   ) {
@@ -22,9 +21,17 @@ export class AppComponent {
         Validators.maxLength(60),
         Validators.required
       ])]
-    })
-    this.todos.push(new Todo(1,'cortar cabelo',false));
-    this.todos.push(new Todo(2,'cortar carne',true));   
+    }) 
+  }
+  clear(){
+    this.form.reset();
+  }
+
+  add() {
+    const title = this.form.controls['title'].value;
+    const id = this.todos.length + 1;
+    this.todos.push(new Todo(id,title,false));
+    this.clear();
   }
 
   remove(todo: Todo){
